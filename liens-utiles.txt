@@ -1,0 +1,4 @@
+- Exemple add-on orange : https://github.com/biolab/orange3-example-addon 
+- Widget Development : https://orange-development.readthedocs.io/
+- Doc widget distance : https://docs.orange.biolab.si/3/visual-programming/widgets/unsupervised/distances.html
+- doc distance Matrix : https://docs.orange.biolab.si/3/visual-programming/widgets/unsupervised/distancematrix.html
