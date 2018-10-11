@@ -8,8 +8,7 @@ Infos utiles
 School Project - DI4 S7 Polytech Tours<br />
 Client : Gilles Venturini<br />
 Made by : Thomas Rossi & Benoît Richard<br />
-Made for : Orange3 with Python3.6<br />
-on Ubuntu 18.04, using Pycharm for python programming and GanttProject
+Made for : Orange3 with Python3.6 on Ubuntu 18.04, using Pycharm for python programming and GanttProject
 
 ----------
 Infos pas forcément utiles
