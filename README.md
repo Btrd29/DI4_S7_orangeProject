@@ -11,10 +11,6 @@ Made by : Thomas Rossi & Benoît Richard
 Made for : Orange3 with Python3.6
 On Ubuntu 18.04, using Pycharm for python programming and GanttProject
 
-
-PC2 - Sac a dos
-===================
-
 ----------
 Infos pas forcément utiles
 -------------
