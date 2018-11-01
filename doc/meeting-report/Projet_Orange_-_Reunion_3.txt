@@ -1,0 +1,18 @@
+implémenter les algo de construction + tenter le parallélisme dans Orange, en python
+
+prendre compte de la longueur des arêtes pour adapter l'algo d'affichage (regarder du côté de l'algorithme de Lin-Log = complément de Fruchterman&Ringolt (algo de base vu à la réunion 1))
+
+dans l'affichage, sélectionner des données du graphe pour les réutiliser en sortie (interaction orange) (option)
+
+chercher comment les graphes sont représentés dans Network Master (matrice, tableau)
+
+calcul de la matrice de distance via composant orange. regarder si c'est en parallèle et sinon, le faire
+
+pousser la machine ==> taille de fichier important et voir le temps demandé
+
+analyses le composant Network Master pour bien le comprendre. si incompréhensible, retour Gilles
+comprendre l'algo d'affichage et de création de graphe ==> implémenter les distances sur les arêtes du graphe
+
+évaluation sur le code (doc, commentaires, clarté) montrer qu'on maîtrise le système, la manière de dev, etc
+
+dans 15 jours ==> réu pour décider si on reste sous Orange ou si on passe en prog Python classique
