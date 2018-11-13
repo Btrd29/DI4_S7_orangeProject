@@ -13,7 +13,7 @@ from Orange.widgets import gui, widget, settings
 from Orange.widgets.widget import Input, Output
 import orangecontrib.network as network
 
-class OWNxProximityGraphs(widget.OWWidget):
+class OWNxEpsilonGraph(widget.OWWidget):
     name = "Proximity Graph Generator"
     description = ('Constructs Graph object from distance matrix')
     icon = "icons/NetworkProximityGraphs.svg"
