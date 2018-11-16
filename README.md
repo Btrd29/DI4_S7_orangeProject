@@ -13,14 +13,14 @@ Made for : Orange3 with Python3.6 on Ubuntu 18.04, using Pycharm for python prog
 ### Instructions
 Chaque binôme doit rédiger un rapport.
 
-1.       Le rapport du projet doit contenir au moins les éléments suivants (plus au moins développés en fonction du sujet du projet) :
+A.       Le rapport du projet doit contenir au moins les éléments suivants (plus au moins développés en fonction du sujet du projet) :
   a.       Objectifs du projet
   b.       Spécifications du logiciel
   c.       Modélisation du logiciel
   d.       Discussion sur l’implémentation et les tests
-2.       Le rapport doit être rendu à l’encadrant 4/5 jours avant la date de soutenance (voir ci-après)
-3.       Le rapport contribue à la note finale du projet
-4.       Le rapport doit être rédigé en latex en suivant le modèle fourni par l’école : https://gitlab.projectsforge.org/polytech/polytech. Sur ce site vous trouverez toutes les instructions utiles pour rédiger le rapport. Entre autre, parmi les options de configuration du fichier latex, il existe l’option type de rapport ‘programmation et génie logiciel’. Cela vous permettra d’avoir automatiquement le modèle adapté au rapport que vous devez rédiger.
+B.       Le rapport doit être rendu à l’encadrant 4/5 jours avant la date de soutenance (voir ci-après)
+C.       Le rapport contribue à la note finale du projet
+D.       Le rapport doit être rédigé en latex en suivant le modèle fourni par l’école : https://gitlab.projectsforge.org/polytech/polytech. Sur ce site vous trouverez toutes les instructions utiles pour rédiger le rapport. Entre autre, parmi les options de configuration du fichier latex, il existe l’option type de rapport ‘programmation et génie logiciel’. Cela vous permettra d’avoir automatiquement le modèle adapté au rapport que vous devez rédiger.
 
 Chaque binôme doit livrer à l’encadrant le code du logiciel implémenté et la documentation annexe. L’organisation et la propreté du code sera aussi un élément qui contribuera à la note finale du projet.
 
