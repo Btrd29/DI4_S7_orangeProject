@@ -13,14 +13,14 @@ Made for : Orange3 with Python3.6 on Ubuntu 18.04, using Pycharm for python prog
 ### Instructions
 Chaque binôme doit rédiger un rapport.<br />
 
-A.       Le rapport du projet doit contenir au moins les éléments suivants (plus au moins développés en fonction du sujet du projet) :<br />
-  a.       Objectifs du projet<br />
-  b.       Spécifications du logiciel<br />
-  c.       Modélisation du logiciel<br />
-  d.       Discussion sur l’implémentation et les tests<br />
-B.       Le rapport doit être rendu à l’encadrant 4/5 jours avant la date de soutenance (voir ci-après)<br />
-C.       Le rapport contribue à la note finale du projet<br />
-D.       Le rapport doit être rédigé en latex en suivant le modèle fourni par l’école : https://gitlab.projectsforge.org/polytech/polytech. Sur ce site vous trouverez toutes les instructions utiles pour rédiger le rapport. Entre autre, parmi les options de configuration du fichier latex, il existe l’option type de rapport ‘programmation et génie logiciel’. Cela vous permettra d’avoir automatiquement le modèle adapté au rapport que vous devez rédiger.<br />
+A.&nbsp;&nbsp;&nbsp;Le rapport du projet doit contenir au moins les éléments suivants (plus au moins développés en fonction du sujet du projet) :<br />
+&nbsp;&nbsp;&nbsp;a.&nbsp;&nbsp;&nbsp;Objectifs du projet<br />
+&nbsp;&nbsp;&nbsp;b.&nbsp;&nbsp;&nbsp;Spécifications du logiciel<br />
+&nbsp;&nbsp;&nbsp;c.&nbsp;&nbsp;&nbsp;Modélisation du logiciel<br />
+&nbsp;&nbsp;&nbsp;d.&nbsp;&nbsp;&nbsp;Discussion sur l’implémentation et les tests<br />
+B.&nbsp;&nbsp;&nbsp;Le rapport doit être rendu à l’encadrant 4/5 jours avant la date de soutenance (voir ci-après)<br />
+C.&nbsp;&nbsp;&nbsp;Le rapport contribue à la note finale du projet<br />
+D.&nbsp;&nbsp;&nbsp;Le rapport doit être rédigé en latex en suivant le modèle fourni par l’école : https://gitlab.projectsforge.org/polytech/polytech. Sur ce site vous trouverez toutes les instructions utiles pour rédiger le rapport. Entre autre, parmi les options de configuration du fichier latex, il existe l’option type de rapport ‘programmation et génie logiciel’. Cela vous permettra d’avoir automatiquement le modèle adapté au rapport que vous devez rédiger.<br />
 
 Chaque binôme doit livrer à l’encadrant le code du logiciel implémenté et la documentation annexe. L’organisation et la propreté du code sera aussi un élément qui contribuera à la note finale du projet.<br />
 
