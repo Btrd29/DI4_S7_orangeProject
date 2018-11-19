@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Projet Orange" company="" webLink="http://" view-date="2018-09-13" view-index="0" gantt-divider-location="517" resource-divider-location="300" version="2.8.9" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="Projet Orange" company="" webLink="http://" view-date="2018-09-09" view-index="0" gantt-divider-location="517" resource-divider-location="300" version="2.8.9" locale="en_US">
     <description><![CDATA[Diagramme de Gantt Projet Orange - DI4 Polytech Tours 2018/19 - Thomas Rossi & Benoît Richard]]></description>
-    <view zooming-state="default:0" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="342" order="0"/>
-        <field id="tpd4" name="Date de début" width="100" order="1"/>
-        <field id="tpd5" name="Date de fin" width="71" order="2"/>
+    <view zooming-state="default:6" id="gantt-chart">
+        <field id="tpd3" name="Name" width="342" order="0"/>
+        <field id="tpd4" name="Begin date" width="100" order="1"/>
+        <field id="tpd5" name="End date" width="71" order="2"/>
         <timeline><![CDATA[20]]></timeline>
-        <option id="color.recent"><![CDATA[#cc0000]]></option>
+        <option id="color.recent"><![CDATA[#3333ff #00cc99 #ffffff #ffff66 #33ff66 #cc0000]]></option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Nom" width="210" order="0"/>
-        <field id="1" name="Rôle par défaut" width="86" order="1"/>
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -93,19 +93,27 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="20" name="Réunions" color="#000000" meeting="false" start="2018-09-18" duration="5" complete="0" thirdDate="2018-09-18" thirdDate-constraint="0" expand="false">
+        <task id="20" name="Réunions" color="#ffffff" meeting="false" start="2018-09-18" duration="39" complete="0" thirdDate="2018-09-18" thirdDate-constraint="0" expand="true">
             <task id="25" name="Réunion no1" color="#cc0000" meeting="true" start="2018-09-18" duration="0" complete="0" thirdDate="2018-09-12" thirdDate-constraint="0" expand="true"/>
             <task id="28" name="Réunion no2" color="#cc0000" meeting="true" start="2018-09-25" duration="0" complete="0" thirdDate="2018-09-12" thirdDate-constraint="0" expand="true"/>
+            <task id="33" name="Réunion no3" color="#cc0000" meeting="true" start="2018-10-18" duration="0" complete="0" thirdDate="2018-09-17" thirdDate-constraint="0" expand="true"/>
+            <task id="37" name="Réunion no4" color="#cc0000" meeting="true" start="2018-11-13" duration="0" complete="0" thirdDate="2018-09-17" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="0" name="Recherche Documentaire" color="#8cb6ce" meeting="false" start="2018-09-13" duration="17" complete="32" thirdDate="2018-09-13" thirdDate-constraint="0" expand="true">
+        <task id="0" name="Recherches" color="#8cb6ce" meeting="false" start="2018-09-13" duration="51" complete="15" thirdDate="2018-09-13" thirdDate-constraint="0" expand="true">
             <task id="13" name="Etude de compatibilité Python / Orange" color="#8cb6ce" meeting="false" start="2018-09-13" duration="8" complete="100" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true"/>
             <task id="11" name="Etude des Bibliothèques python" color="#8cb6ce" meeting="false" start="2018-09-18" duration="13" complete="33" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true"/>
-            <task id="16" name="Etude sur la Théorie des Graphes" color="#8cb6ce" meeting="false" start="2018-09-18" duration="12" complete="0" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true"/>
-            <task id="32" name="Rédaction du cahier de spécification" color="#8cb6ce" meeting="false" start="2018-10-01" duration="5" complete="0" thirdDate="2018-09-13" thirdDate-constraint="0" expand="true"/>
+            <task id="16" name="Etude sur la Théorie des Graphes" color="#8cb6ce" meeting="false" start="2018-09-18" duration="44" complete="0" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true"/>
+            <task id="55" name="Etude de la programmation parallèle Python" color="#8cb6ce" meeting="false" start="2018-11-05" duration="15" complete="0" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="4" name="Premiers Tests sur Orange" color="#8cb6ce" meeting="false" start="2018-09-13" duration="8" complete="100" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true">
-            <task id="8" name="Ajout d'un composant test" color="#8cb6ce" meeting="false" start="2018-09-13" duration="8" complete="100" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true"/>
+        <task id="4" name="Premiers Tests sur Orange" color="#3333ff" meeting="false" start="2018-09-13" duration="8" complete="100" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true">
+            <task id="8" name="Ajout d'un composant test" color="#3333ff" meeting="false" start="2018-09-13" duration="8" complete="100" thirdDate="2018-09-10" thirdDate-constraint="0" expand="true"/>
         </task>
+        <task id="38" name="Développement des widgets" color="#ffff66" meeting="false" start="2018-11-05" duration="48" complete="0" thirdDate="2018-11-05" thirdDate-constraint="0" expand="true">
+            <task id="39" name="Implémentation du widget Epsilon Graph" color="#ffff66" meeting="false" start="2018-11-05" duration="20" complete="0" thirdDate="2018-09-03" thirdDate-constraint="0" expand="true"/>
+            <task id="41" name="Implémentation du widget RNG" color="#ffff66" meeting="false" start="2018-11-05" duration="20" complete="0" thirdDate="2018-09-03" thirdDate-constraint="0" expand="true"/>
+            <task id="42" name="Implémentation du widget d'affichage (Lin Log)" color="#ffff66" meeting="false" start="2018-12-03" duration="28" complete="0" thirdDate="2018-09-03" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="32" name="Rédaction du cahier de spécification" color="#33ff66" meeting="false" start="2018-10-01" duration="73" complete="10" thirdDate="2018-09-13" thirdDate-constraint="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
