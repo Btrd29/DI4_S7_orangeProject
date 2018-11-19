@@ -4,3 +4,4 @@
 - Doc distance Matrix : https://docs.orange.biolab.si/3/visual-programming/widgets/unsupervised/distancematrix.html
 - Source code for distance widget : https://github.com/biolab/orange3/tree/master/Orange/distance
 - Python explainations about "yield" : https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do
+- Doc about parallel programming in python : https://code.tutsplus.com/fr/articles/introduction-to-parallel-and-concurrent-programming-in-python--cms-28612
