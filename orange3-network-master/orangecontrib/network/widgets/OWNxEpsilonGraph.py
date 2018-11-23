@@ -31,3 +31,14 @@ class OWNxEpsilonGraph(widget.OWWidget):
 
     def __init__(self):
         super().__init__()
+
+        self.matrix = None
+        self.graph = None
+        self.graph_matrix = None
+
+if __name__ == "__main__":
+    from AnyQt.QtWidgets import QApplication
+    appl = QApplication([])
+    ow = OWNxFromDistances()
+    ow.show()
+    appl.exec_()
