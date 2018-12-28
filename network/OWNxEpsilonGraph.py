@@ -36,9 +36,34 @@ class OWNxEpsilonGraph(widget.OWWidget):
         self.graph = None
         self.graph_matrix = None
 
+    @Inputs.distances
+    def set_matrix(self, data):
+        self.matrix = data
+        if data is None:
+            self.histogram.setValues([])
+            self.generateGraph()
+            return
+
+        if self.matrix.row_items is None:
+            self.matrix.row_items = list(range(self.matrix.shape[0]))
+
+        # draw histogram
+        self.matrix_values = values = sorted(self.matrix.flat)
+        self.histogram.setValues(values)
+
+        # Magnitude of the spinbox's step is data-dependent
+        low, upp = values[0], values[-1]
+        step = (upp - low) / 20
+        self.spin_high.setSingleStep(step)
+
+        self.spinUpperThreshold = low - (0.03 * (upp - low))
+
+        self.setPercentil()
+        self.generateGraph()
+
 if __name__ == "__main__":
     from AnyQt.QtWidgets import QApplication
     appl = QApplication([])
-    ow = OWNxFromDistances()
+    ow = OWNxEpsilonGraph()
     ow.show()
     appl.exec_()

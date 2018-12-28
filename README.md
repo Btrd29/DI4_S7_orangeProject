@@ -10,6 +10,18 @@ Client : Gilles Venturini<br />
 Made by : Thomas Rossi & Benoît Richard<br />
 Made for : Orange3 with Python3.6 on Ubuntu 18.04, using Pycharm for python programming and GanttProject
 
+### Install instructions
+First of all, install Python3.6 on your device, then run the following command :
+```
+sh install.sh
+```
+
+To update the widget has to be updated, just run :
+```
+sh update.sh
+```
+
+
 ### Instructions
 Chaque binôme doit rédiger un rapport.<br />
 
