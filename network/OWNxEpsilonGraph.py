@@ -15,8 +15,9 @@ import orangecontrib.network as network
 
 class OWNxEpsilonGraph(widget.OWWidget):
     name = "Proximity Graph Generator"
-    description = ('Constructs Graph object from distance matrix')
-    icon = "icons/NetworkProximityGraphs.svg"
+    description = ('Constructs Graph object from distance matrix'
+                   'using Epsilon algorithm.')
+    icon = "icons/NetworkProximityGraph.svg"
     priority = 6440 #priority based on NetworkFromDistances widget
 
     class Inputs:
@@ -36,6 +37,7 @@ class OWNxEpsilonGraph(widget.OWWidget):
         self.graph = None
         self.graph_matrix = None
 
+    # Processing distance input
     @Inputs.distances
     def set_matrix(self, data):
         self.matrix = data
@@ -61,9 +63,18 @@ class OWNxEpsilonGraph(widget.OWWidget):
         self.setPercentil()
         self.generateGraph()
 
+    # Outputs processing (has to be called if any modification on the network happens)
+    def sendSignals(self):
+        self.Outputs.network.send(self.graph)
+        self.Outputs.distances.send(self.graph_matrix)
+        if self.graph is None:
+            self.Outputs.data.send(None)
+        else:
+            self.Outputs.data.send(self.graph.items())
+
 if __name__ == "__main__":
     from AnyQt.QtWidgets import QApplication
-    appl = QApplication([])
+    a = QApplication([])
     ow = OWNxEpsilonGraph()
     ow.show()
-    appl.exec_()
+    a.exec_()
