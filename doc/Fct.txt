@@ -1,8 +1,8 @@
 Fonctions principales
 
 Creation de graphe
-	v Epsilon graphe
-	x KNN graphe
+	x Epsilon graphe
+	v KNN graphe
 	x Relative Neighbourhood graphe
 Affichage de graphe
 	v Affichage de type force-ressort
