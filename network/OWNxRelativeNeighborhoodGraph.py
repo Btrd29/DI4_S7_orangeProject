@@ -20,11 +20,11 @@ class OWNxRelativeNeighborhoodGraph(widget.OWWidget):
     description = ('Constructs Graph object using RNG algorithm. '
                    'Nodes from data table are connected to each other '
                    'if there is no third node that is between those '
-                   'two first nodes.' \
-                   'Exemple: i, j, k - three nodes.' \
-                   'if the distance between k and i, or k and j, is less'
-                   'than the distance between i and j, it means that k is'
-                   'placed between i and j, therefore i and j can not be'
+                   'two first nodes. '
+                   'Exemple: i, j, k - three nodes. '
+                   'if the distance between k and i, or k and j, is less '
+                   'than the distance between i and j, it means that k is '
+                   'placed between i and j, therefore i and j can not be '
                    'connected.')
     icon = "icons/RNGNetworkProximityGraph.svg"
     priority = 6440 #priority based on NetworkFromDistances widget
@@ -122,9 +122,16 @@ class OWNxRelativeNeighborhoodGraph(widget.OWWidget):
             rows, cols = matrix.shape
             for i in range(rows):
                 for j in range(i + 1, cols):
+                    link = True
+                    d = matrix[i, j]
                     for k in range(cols):
-                        if not (matrix[i, k] < matrix[i, j] and matrix[j, k] < matrix[i, j]):
-                            yield i, j, matrix[i, j]
+                        if (k != i) or (k != j):
+                            if (matrix[i, k] < d) and (matrix[j, k] < d):
+                                link = False
+                                break
+                    if link:
+                        yield i, j, d
+
 
         edges = edges_via_rng(self.matrix)
         graph.add_edges_from((u, v, {'weight': d}) for u, v, d in edges)
@@ -165,7 +172,13 @@ class OWNxRelativeNeighborhoodGraph(widget.OWWidget):
             self.Warning.large_number_of_nodes()
 
         self.sendSignals()
-        self.histogram.setRegion(0, self.graph.links()[len(self.graph.links())-1])
+
+        # first parameter is the lower border
+        # second parameter is the higher border
+        if matrix is not None:
+            self.histogram.setRegion(0, matrix[len(matrix)-1])
+        else:
+            self.histogram.setRegion(0, 0)
 
     # Outputs processing (has to be called if any modification on the network happens)
     def sendSignals(self):
