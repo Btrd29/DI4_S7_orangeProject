@@ -16,7 +16,7 @@ First of all, install Python3.6 on your device, then run the following command :
 sh install.sh
 ```
 
-If the widget has to be updated, just run :
+If the widget has to be updated, just run and then restart orange3 :
 ```
 sh update.sh
 ```
