@@ -15,13 +15,18 @@ import orangecontrib.network as network
 
 import pyqtgraph as pg # lib for graphs, used for Histogram
 
-class OWNxEpsilonGraph(widget.OWWidget):
-    name = "Epsilon Proximity Graph Generator"
-    description = ('Constructs Graph object using Epsilon algorithm. '
-                   'Nodes from data table are connected only if the '
-                   'distance between them is equal or less than a '
-                   'given parameter (ε).')
-    icon = "icons/EpsilonNetworkProximityGraph.svg"
+class OWNxRelativeNeighborhoodGraph(widget.OWWidget):
+    name = "RNG Proximity Graph Generator"
+    description = ('Constructs Graph object using RNG algorithm. '
+                   'Nodes from data table are connected to each other '
+                   'if there is no third node that is between those '
+                   'two first nodes.' \
+                   'Exemple: i, j, k - three nodes.' \
+                   'if the distance between k and i, or k and j, is less'
+                   'than the distance between i and j, it means that k is'
+                   'placed between i and j, therefore i and j can not be'
+                   'connected.')
+    icon = "icons/RNGNetworkProximityGraph.svg"
     priority = 6440 #priority based on NetworkFromDistances widget
 
     class Inputs:
@@ -43,8 +48,6 @@ class OWNxEpsilonGraph(widget.OWWidget):
     def __init__(self):
         super().__init__()
 
-        self.epsilon = 0
-
         self.matrix = None
         self.graph = None
         self.graph_matrix = None
@@ -53,7 +56,6 @@ class OWNxEpsilonGraph(widget.OWWidget):
         self.mainArea.layout().addWidget(self.histogram)
         self.mainArea.setMinimumWidth(500)
         self.mainArea.setMinimumHeight(100)
-        self.addHistogramControls()
 
         # info
         boxInfo = gui.widgetBox(self.controlArea, box="Info")
@@ -64,17 +66,6 @@ class OWNxEpsilonGraph(widget.OWWidget):
         gui.rubber(self.controlArea)
 
         self.resize(600, 400)
-
-    def addHistogramControls(self):
-        boxHisto = gui.widgetBox(self.controlArea, box="Algorithm controls")
-        ribg = gui.widgetBox(boxHisto, None, orientation="horizontal", addSpace=False)
-        self.spin_high = gui.doubleSpin(boxHisto, self, 'epsilon',
-                                        0, float('inf'), 0.001, decimals=3,
-                                        label='Epsilon',
-                                        callback=self.changeUpperSpin,
-                                        keyboardTracking=False,
-                                        controlWidth=60)
-        self.histogram.region.sigRegionChangeFinished.connect(self.spinboxFromHistogramRegion)
 
     # Processing distance input
     @Inputs.distances
@@ -115,47 +106,39 @@ class OWNxEpsilonGraph(widget.OWWidget):
             self.sendSignals()
             return
 
-        nEdgesEstimate = 2 * sum(y for x, y in zip(self.histogram.xData, self.histogram.yData)
-                                 if x <= self.epsilon)
+        graph = network.Graph()
+        graph.add_nodes_from(range(self.matrix.shape[0]))
+        matrix = self.matrix
 
-        if nEdgesEstimate > 200000:
-            self.graph = None
-            nedges = 0
-            n = 0
-            self.Error.number_of_edges(nEdgesEstimate)
-        else:
-            graph = network.Graph()
-            graph.add_nodes_from(range(self.matrix.shape[0]))
-            matrix = self.matrix
+        if matrix is not None and matrix.row_items is not None:
+            if isinstance(self.matrix.row_items, Table):
+                graph.set_items(self.matrix.row_items)
+            else:
+                data = [[str(x)] for x in self.matrix.row_items]
+                items = Table(Domain([], metas=[StringVariable('label')]), data)
+                graph.set_items(items)
 
-            if matrix is not None and matrix.row_items is not None:
-                if isinstance(self.matrix.row_items, Table):
-                    graph.set_items(self.matrix.row_items)
-                else:
-                    data = [[str(x)] for x in self.matrix.row_items]
-                    items = Table(Domain([], metas=[StringVariable('label')]), data)
-                    graph.set_items(items)
-
-            def edges_via_epsilon(matrix, epsilon):
-                rows, cols = matrix.shape
-                for i in range(rows):
-                    for j in range(i + 1, cols):
-                        if matrix[i, j] <= epsilon:
+        def edges_via_rng(matrix):
+            rows, cols = matrix.shape
+            for i in range(rows):
+                for j in range(i + 1, cols):
+                    for k in range(cols):
+                        if not (matrix[i, k] < matrix[i, j] and matrix[j, k] < matrix[i, j]):
                             yield i, j, matrix[i, j]
 
-            edges = edges_via_epsilon(self.matrix, self.epsilon)
-            graph.add_edges_from((u, v, {'weight': d}) for u, v, d in edges)
-            matrix = None
-            self.graph = None
-            component = []
-            self.graph = graph
-            if len(component) > 1:
-                if len(component) == graph.number_of_nodes():
-                    self.graph = graph
-                    matrix = self.matrix
-                else:
-                    self.graph = graph.subgraph(component)
-                    matrix = self.matrix.submatrix(sorted(component))
+        edges = edges_via_rng(self.matrix)
+        graph.add_edges_from((u, v, {'weight': d}) for u, v, d in edges)
+        matrix = None
+        self.graph = None
+        component = []
+        self.graph = graph
+        if len(component) > 1:
+            if len(component) == graph.number_of_nodes():
+                self.graph = graph
+                matrix = self.matrix
+            else:
+                self.graph = graph.subgraph(component)
+                matrix = self.matrix.submatrix(sorted(component))
 
         if matrix is not None:
             matrix.row_items = self.graph.items()
@@ -182,7 +165,7 @@ class OWNxEpsilonGraph(widget.OWWidget):
             self.Warning.large_number_of_nodes()
 
         self.sendSignals()
-        self.histogram.setRegion(0, self.epsilon)
+        self.histogram.setRegion(0, self.graph.links()[len(self.graph.links())-1])
 
     # Outputs processing (has to be called if any modification on the network happens)
     def sendSignals(self):
@@ -192,16 +175,6 @@ class OWNxEpsilonGraph(widget.OWWidget):
             self.Outputs.data.send(None)
         else:
             self.Outputs.data.send(self.graph.items())
-
-    def changeUpperSpin(self):
-        if self.matrix is None: return
-        self.epsilon = np.clip(self.epsilon, *self.histogram.boundary())
-        self.percentil = 100 * np.searchsorted(self.matrix_values, self.epsilon) / len(self.matrix_values)
-        self.generateGraph()
-
-    def spinboxFromHistogramRegion(self):
-        _, self.epsilon = self.histogram.getRegion()
-        self.changeUpperSpin()
 
 # Dependencies (InfiniteLine & Histogram)
 pg_InfiniteLine = pg.InfiniteLine
@@ -285,6 +258,6 @@ class Histogram(pg.PlotWidget):
 if __name__ == "__main__":
     from AnyQt.QtWidgets import QApplication
     a = QApplication([])
-    ow = OWNxEpsilonGraph()
+    ow = OWNxRelativeNeighborhoodGraph()
     ow.show()
     a.exec_()
